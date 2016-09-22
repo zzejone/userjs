@@ -20,36 +20,36 @@ var intevelSites = ['phpmyadmin'];
 
 
 function changeBg(){
-    var main = document.getElementsByTagName("body");
-    main[0].style.background = bgColor;
-    main[0].style.color = txtColor;
-
-    var allTags = document.getElementsByTagName("*");
-    var allTagsNum = allTags.length;
-    for(var i= 0;i<allTagsNum;i++){
-        allTags[i].style.background = bgColor;
-        allTags[i].style.textShadow = 'none';
-        allTags[i].style.color = txtColor;
-    }
+  var main = document.getElementsByTagName("body");
+  main[0].style.background = bgColor;
+  main[0].style.color = txtColor;
+  
+  var allTags = document.getElementsByTagName("*");
+  var allTagsNum = allTags.length;
+  for(var i= 0;i<allTagsNum;i++){
+    allTags[i].style.background = bgColor;
+    allTags[i].style.textShadow = 'none';
+    allTags[i].style.color = txtColor;
+  }
 }
 
 function changeLink(){
-    var links = document.getElementsByTagName("a");
-    var linkNum = links.length;
-    for(var i = 0; i < linkNum; i++){
-        links[i].style.color = linkColor;
-    }
+  var links = document.getElementsByTagName("a");
+  var linkNum = links.length;
+  for(var i = 0; i < linkNum; i++){
+    links[i].style.color = linkColor;
+  }
 }
 
 function main(){
-    changeBg();
-    changeLink();
+  changeBg();
+  changeLink();
 }
-/////////////////////action///////////////////
 main();
 
-for(var i = 0;i < intevelSites.length; i++){
-    if(location.hostname.indexOf(intevelSites[i])){
-        setInterval(main, 2000);
-    }
+var leng = intevelSites.length;
+for(var i = 0; i < leng; i++){
+  if(location.href.indexOf(intevelSites[i]) != -1){
+    setInterval(main, 1000);
+  }
 }
