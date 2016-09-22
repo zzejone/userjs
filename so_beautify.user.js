@@ -36,6 +36,9 @@ $(document).ready(function(){
     //open url directly
     $('#m-result .res-list').each(function(){
         $(this).find('.res-linkinfo').remove();
+        $(this).find('img').remove();
+        $(this).find('div').removeClass('res-rich');
+        $(this).find('.cont').remove();
         var url = decodeURIComponent($(this).find('h3 a').eq(0).attr('href')).match(/url=(.+?)&q=/g)[0];
         var urlLeng = url.length;
         var href = url.substr(4, urlLeng - 7);
