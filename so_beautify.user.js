@@ -10,42 +10,34 @@
 // ==/UserScript==
 
 
-// Add jQuery
-var GM_JQ = document.createElement('script');
-GM_JQ.src = 'http://jquery.com/src/jquery-latest.js';
-GM_JQ.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(GM_JQ);
+function main(){
+    //$('#side').html('');//右边ad删除
+    if(document.getElementById('cardWrap')){
+        document.getElementById('cardWrap').remove();
+    }
+    if(document.getElementById('side')){
+        document.getElementById('side').remove();
+    }
+    if(document.getElementById('m-spread-left')){
+        document.getElementById('m-spread-left');
+    }
+    if (document.getElementById('main')) {
+        document.getElementById('main').style.width = '98%';
+    }
 
-// Check if jQuery's loaded
-function GM_wait()
-{
-    if(typeof unsafeWindow.jQuery == 'undefined') { window.setTimeout(GM_wait,100); }
-    else { $ = unsafeWindow.jQuery; letsJQuery(); }
+    var searchResult = document.getElementsByClassName('res-list');
+    if (searchResult) {
+        for (var i = searchResult.length - 1; i >= 0; i--) {
+            var all_a = searchResult[i].getElementsByTagName('a');
+            if (all_a) {
+                for (var j = all_a.length - 1; j >= 0; j--) {
+                    var url = all_a[j].href.toString();
+                    var link = decodeURIComponent(url).match(/url=(.+?)&q=/g)[0];
+                    var href = link.substr(4, link.length - 7);
+                    all_a[j].href = href;
+                }
+            }
+        }
+    }
 }
-GM_wait();
-
-
-// *** put your code inside letsJQuery: 
-function letsJQuery()
-{
-$(document).ready(function(){
-    $('#side').html('');//右边ad删除
-    window.setTimeout($('#cardWrap').remove(), 3000);//下面广告删除
-    $('#m-spread-left').remove();
-    $('#main').css({'width':'98%'});
-    //open url directly
-    $('#m-result .res-list').each(function(){
-        $(this).find('.res-linkinfo').remove();
-        $(this).find('img').remove();
-        $(this).find('div').removeClass('res-rich');
-        $(this).find('.cont').remove();
-        var url = decodeURIComponent($(this).find('h3 a').eq(0).attr('href')).match(/url=(.+?)&q=/g)[0];
-        var urlLeng = url.length;
-        var href = url.substr(4, urlLeng - 7);
-        $(this).find('h3 a').removeAttr('href');
-        $(this).click(function(){
-            window.open(href);
-        });
-    });
-});
-}
+window.setTimeout(main,1000);
