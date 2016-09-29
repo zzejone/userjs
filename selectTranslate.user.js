@@ -15,7 +15,7 @@ function getSelect() {
   }
 }
 function BSkeyDown(e) {
-  if (84 == e.keyCode) {
+  
     var word = getSelect();
     var yurl = 'http://fanyi.youdao.com/openapi.do?keyfrom=selectTranslate&key=509196210&type=data&doctype=json&version=1.1&q=' + word;
     GM_xmlhttpRequest({
@@ -27,7 +27,7 @@ function BSkeyDown(e) {
         showTranslate(content, word);
       }
     });
-  }
+  
 }
 
 function showTranslate(content, title){
@@ -49,4 +49,4 @@ function showTranslate(content, title){
     document.getElementById('_translate').remove();
   },10000);
 }
-document.onkeydown = BSkeyDown;
+document.ondblclick = BSkeyDown;
