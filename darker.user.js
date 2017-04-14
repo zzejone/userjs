@@ -16,7 +16,7 @@ var linkColor = '#ff8a00';
 // var targetColor = '#E6D6B8'; // 90
 // var targetColor = '#E3E1D1'; // 89
 
-var Brightness_Threshold = 0.94; // a number between 0 and 1
+var Brightness_Threshold = 0.99; // a number between 0 and 1
 
 // For websites updating their contents via ajax, NoBrighter can run in background and convert background color periodically.
 var longRunSites = [
@@ -61,10 +61,10 @@ function changeBgcolor(elem) {
         // we adopt HSL's lightness definition, see http://en.wikipedia.org/wiki/HSL_and_HSV
         var brightness = (Math.max(r, g, b) + Math.min(r, g, b)) / 255 / 2;
 
-        if (brightness > Brightness_Threshold) {
+        //if (brightness > Brightness_Threshold) {
             elem.style.backgroundColor = targetColor;
             elem.style.color = txtColor;
-        }
+        //}
         return true;
     } else {
         return false;
