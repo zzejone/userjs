@@ -18,12 +18,6 @@ function main(){
     if(document.getElementById('side')){
         document.getElementById('side').remove();
     }
-    if(document.getElementById('m-spread-left')){
-        document.getElementById('m-spread-left');
-    }
-    if (document.getElementById('main')) {
-        document.getElementById('main').style.width = '98%';
-    }
 
     var searchResult = document.getElementsByClassName('res-list');
     if (searchResult) {

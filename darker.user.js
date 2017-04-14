@@ -71,6 +71,7 @@ function changeAll() {
             bodyChanged = true;
         }
     }
+    changeLink();
 }
 changeAll();
 function changeLink(){
@@ -80,7 +81,6 @@ function changeLink(){
     links[i].style.color = linkColor;
   }
 }
-changeLink();
 
 if (window.top == window) {
     // change transparent only when in top frame
