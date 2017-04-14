@@ -18,27 +18,6 @@ var linkColor = '#ff8a00';
 
 var Brightness_Threshold = 0.99; // a number between 0 and 1
 
-// For websites updating their contents via ajax, NoBrighter can run in background and convert background color periodically.
-var longRunSites = [
-    'mail.google.com',
-    'docs.google.com',
-    'plus.google.com',
-    'groups.google.com',
-
-    'twitter.com',
-    'github.com',
-
-    'www.coursera.org',
-    'class.coursera.org',
-
-    'weibo.com',
-    'www.weibo.com',
-    'www.renren.com',
-
-    'feedly.com',
-    'reader.aol.com',
-];
-
 var $minHeight = 6;
 
 // ========== End of config ========== //
@@ -75,6 +54,7 @@ function changeTransparent(elem) {
     var bgcolor = window.getComputedStyle(elem, null).backgroundColor;
     if (!bgcolor || isTransparent(bgcolor)) {
         elem.style.backgroundColor = targetColor;
+        elem.style.color = txtColor;
     }
 }
 
@@ -109,10 +89,5 @@ if (window.top == window) {
     }
 }
 
-for (var i = 0; i < longRunSites.length; i++) {
-    if (location.hostname === longRunSites[i]) {
-        console.info('make NoBrighter runs forever...');
-        setInterval(changeAll, 2000); // convert every 2s
-        break;
-    }
-}
+
+setInterval(changeAll, 5000); // convert every 2s
